@@ -26,7 +26,7 @@ with gr.Blocks(css=get_app_css()) as demo:
             return gr.update(label=get_lora_toggle_label(num))
         use_lora = gr.Checkbox(
             label=get_lora_toggle_label(),
-            value=True,
+            value=False,
             elem_classes="use_lora"
         )
         lora_num = gr.State(0)
@@ -110,6 +110,13 @@ with gr.Blocks(css=get_app_css()) as demo:
         outputs=lora_info_display,
     )
     use_lora.change(
+        fn=lambda x: gr.update(visible=x),
+        inputs=use_lora,
+        outputs=[
+            group,
+        ],
+    )
+    demo.load(
         fn=lambda x: gr.update(visible=x),
         inputs=use_lora,
         outputs=[
