@@ -1,7 +1,7 @@
 def get_app_css():
     return """
 .delete_lora_button {
-    height: -webkit-fill-available;
+    height: stretch;
     max-width: fit-content;
     min-width: fit-content;
 }
